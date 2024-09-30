@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мій сайт</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Мій сайт</h1>
+    <nav>
+      <ul>
+        <li><a href="#" id="login-link">Вхід</a></li>
+        <li><a href="#" id="register-link">Реєстрація</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="login-form" class="modal">
+      <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Вхід</h2>
+          <form id="login-form-content">
+              <label for="login-email">Email:</label>
+              <input type="email" id="login-email" name="login-email" required>
+              <label for="login-password">Пароль:</label>
+              <input type="password" id="login-password" name="login-password" required>
+              <button type="submit">Увійти</button>
+              <a href="#" id="forgot-password-link">Забув пароль</a>
+          </form>
+      </div>
+    </div>
+
+    <div id="reset-password-form" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Скинути пароль</h2>
+        <form id="reset-password-form-content">
+          <label for="reset-email">Email:</label>
+          <input type="email" id="reset-email" name="reset-email" required>
+          <label for="reset-password">Новий пароль:</label>
+          <input type="password" id="reset-password" name="reset-password" required>
+          <button type="submit">Скинути пароль</button>
+        </form>
+      </div>
+    </div>
+    
+  
+
+    <div id="register-form" class="modal">
+      <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Реєстрація</h2>
+          <form id="register-form-content">
+              <label for="register-name">Ім'я:</label>
+              <input type="text" id="register-name" name="register-name" required>
+              <label for="register-email">Email:</label>
+              <input type="email" id="register-email" name="register-email" required>
+              <label for="register-password">Пароль:</label>
+              <input type="password" id="register-password" name="register-password" required>
+              <button type="submit">Зареєструватися</button>
+          </form>
+      </div>
+  </div>
+  
+
+    <div id="profile-page" class="hidden">
+      <h2>Профіль</h2>
+      <p>Ім'я: <span id="profile-name"></span></p>
+      <p>Email: <span id="profile-email"></span></p>
+      <input type="text" id="profile-name-input" placeholder="Введіть нове ім'я">
+      <button id="save-profile">Зберегти</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
