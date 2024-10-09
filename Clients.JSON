@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Іван Іванов",
+    "email": "ivan@example.com",
+    "password": "password123"
+  },
+  {
+    "name": "Марія Петрова",
+    "email": "maria@example.com",
+    "password": "qwerty456"
+  },
+  {
+    "name": "123",
+    "email": "123@123",
+    "password": "1"
+  },
+  {
+    "name": "2",
+    "email": "1@1",
+    "password": "2"
+  },
+  {
+    "login": "12345",
+    "name": "s",
+    "email": "1213q@gmail.com",
+    "password": "0986543A",
+    "phone": "+0987654321",
+    "dob": "2024-10-08"
+  },
+  {
+    "login": "12345",
+    "name": "asd",
+    "email": "1@g.com",
+    "password": "0987654321A",
+    "phone": "0987654321a",
+    "dob": "2024-10-01"
+  }
+]
