@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const saveProfileButton = document.getElementById("save-profile");
     const profileNameInput = document.getElementById("profile-name-input");
 
-    // Validate and submit the registration form
+  
     document.getElementById("register-form-content").addEventListener("submit", function (event) {
         event.preventDefault();
 
         let valid = true;
 
-        // Validate login
+    
         const login = document.getElementById("register-login").value;
         const loginError = document.getElementById("login-error");
         if (login.length < 5) {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             loginError.textContent = "";
         }
 
-        // Validate name (letters only)
+   
         const name = document.getElementById("register-name").value;
         const nameError = document.getElementById("name-error");
         if (!/^[a-zA-Zа-яА-Я]+$/.test(name)) {
@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
             nameError.textContent = "";
         }
 
-        // Validate email
         const email = document.getElementById("register-email").value;
         const emailError = document.getElementById("email-error");
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
             emailError.textContent = "";
         }
 
-        // Validate password (minimum 8 characters, 1 uppercase, 1 number)
         const password = document.getElementById("register-password").value;
         const passwordError = document.getElementById("password-error");
         const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
@@ -59,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
             passwordError.textContent = "";
         }
 
-        // Validate date of birth (should not be a future date)
         const dob = document.getElementById("register-dob").value;
         const dobError = document.getElementById("dob-error");
         const currentDate = new Date().toISOString().split("T")[0];
@@ -72,11 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (valid) {
             const phone = document.getElementById("register-phone").value;
-            registerUser(login, name, email, password, phone, dob); // Call function to register user
+            registerUser(login, name, email, password, phone, dob); 
         }
     });
 
-    // Function to register the user
+
     async function registerUser(login, name, email, password, phone, dob) {
         try {
             const response = await fetch('/register', {
@@ -84,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ login, name, email, password, phone, dob }) // Include all fields
+                body: JSON.stringify({ login, name, email, password, phone, dob }) 
             });
 
             if (response.ok) {
@@ -92,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 closeModal(registerForm);
             } else {
                 const errorText = await response.text();
-                alert(errorText);  // Show error message
+                alert(errorText);  
             }
         } catch (error) {
             console.error('Помилка:', error);
@@ -100,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Modal management functions
+
     function showModal(modal) {
         modal.style.display = "block";
     }
@@ -109,17 +106,17 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.display = "none";
     }
 
-    // Login modal
+
     loginLink.addEventListener("click", function () {
         showModal(loginForm);
     });
 
-    // Register modal
+
     registerLink.addEventListener("click", function () {
         showModal(registerForm);
     });
 
-    // Forgot password modal
+ 
     const forgotPasswordLink = document.getElementById("forgot-password-link");
     forgotPasswordLink.addEventListener("click", function () {
         showModal(resetPasswordForm);
@@ -131,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Handle login form
+
     document.getElementById("login-form-content").addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -162,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Handle password reset
+
     document.getElementById("reset-password-form-content").addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -190,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Handle profile update
+
     saveProfileButton.addEventListener("click", async function () {
         const newName = profileNameInput.value;
         try {
@@ -204,10 +201,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (response.ok) {
                 alert('Профіль успішно оновлено');
-                profileNameSpan.textContent = newName; // Оновлюємо ім'я на сторінці
+                profileNameSpan.textContent = newName; 
             } else {
-                const errorText = await response.text(); // Отримуємо текстову відповідь
-                alert(errorText); // Виводимо текст у випадку помилки
+                const errorText = await response.text(); 
+                alert(errorText); 
             }
         } catch (error) {
             console.error('Помилка:', error);

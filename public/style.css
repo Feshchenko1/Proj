@@ -1,4 +1,4 @@
-/* Стилі для модальних вікон */
+
 .modal {
     display: none;
     position: fixed;
@@ -33,7 +33,7 @@
     cursor: pointer;
   }
   
-  /* Стилі для сторінки профілю */
+
   .hidden {
     display: none;
   }

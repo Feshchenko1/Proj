@@ -2,24 +2,24 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
-const PORT = 5500; // Змінено порт на 5500
+const PORT = 5500; 
 
-// Middleware
-app.use(bodyParser.json()); // This is crucial for parsing JSON request bodies
+
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
-app.use(express.static('public')); // Де ваші HTML, CSS та JS файли
+app.use(express.static('public')); 
 
-// Читати дані з Clients.json
+
 const readData = () => {
     return JSON.parse(fs.readFileSync('Clients.json', 'utf-8'));
 };
 
-// Записувати дані в Clients.json
+
 const writeData = (data) => {
     fs.writeFileSync('Clients.json', JSON.stringify(data, null, 2), 'utf-8');
 };
 
-// Вхід користувача
+
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -32,7 +32,7 @@ app.post('/login', async (req, res) => {
     res.json({ name: user.name, email: user.email });
 });
 
-// Реєстрація нового користувача
+
 app.post('/register', async (req, res) => {
     console.log('Request body:', req.body);
 
@@ -56,7 +56,6 @@ app.post('/register', async (req, res) => {
 });
 
 
-// Скидання пароля
 app.post('/resetPassword', async (req, res) => {
     const { email, newPassword } = req.body;
 
@@ -71,7 +70,7 @@ app.post('/resetPassword', async (req, res) => {
     res.send('Пароль успішно скинуто');
 });
 
-// Оновлення профілю
+
 app.post('/updateProfile', async (req, res) => {
     const { email, newName } = req.body;
 
@@ -86,7 +85,6 @@ app.post('/updateProfile', async (req, res) => {
     }
 });
 
-// Запуск сервера
 app.listen(PORT, () => {
     console.log(`Сервер працює на http://127.0.0.1:${PORT}`);
 });
