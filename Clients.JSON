@@ -21,7 +21,7 @@
   },
   {
     "login": "12345",
-    "name": "s",
+    "name": "dsass",
     "email": "1213q@gmail.com",
     "password": "0986543A",
     "phone": "+0987654321",
@@ -29,10 +29,26 @@
   },
   {
     "login": "12345",
-    "name": "asd",
+    "name": "asda",
     "email": "1@g.com",
     "password": "0987654321A",
     "phone": "0987654321a",
     "dob": "2024-10-01"
+  },
+  {
+    "login": "<script>alert('test');</script>",
+    "name": "rrrr",
+    "email": "12@f.com",
+    "password": "<script>alert('tesT1');</script>",
+    "phone": "<script>alert('tesT1');</script>",
+    "dob": "2024-10-10"
+  },
+  {
+    "login": "123123",
+    "name": "asf",
+    "email": "11232@f.com",
+    "password": "1234567890Af",
+    "phone": "1231231231",
+    "dob": "2024-10-10"
   }
 ]

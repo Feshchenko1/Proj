@@ -74,6 +74,66 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+document.getElementById("login-form-content").addEventListener("submit", async function (event) {
+    event.preventDefault();
+    
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('token', data.token); 
+            profileNameSpan.textContent = data.name;
+            profileEmailSpan.textContent = data.email;
+            closeModal(loginForm);
+            profilePage.classList.remove("hidden");
+        } else {
+            alert('Неправильний email або пароль');
+        }
+    } catch (error) {
+        console.error('Помилка:', error);
+        alert('Сталася помилка при вході.');
+    }
+});
+
+
+saveProfileButton.addEventListener("click", async function () {
+    const newName = profileNameInput.value;
+    const token = localStorage.getItem('token');
+
+    try {
+        const response = await fetch('/updateProfile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token 
+            },
+            body: JSON.stringify({ newName })
+        });
+
+        if (response.ok) {
+            alert('Профіль успішно оновлено');
+            profileNameSpan.textContent = newName;
+        } else {
+            const errorText = await response.text();
+            alert(errorText);
+        }
+    } catch (error) {
+        console.error('Помилка:', error);
+        alert('Сталася помилка при оновленні профілю.');
+    }
+});
+
+
     async function registerUser(login, name, email, password, phone, dob) {
         try {
             const response = await fetch('/register', {
